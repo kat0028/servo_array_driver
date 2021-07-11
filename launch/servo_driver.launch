@@ -1,0 +1,5 @@
+<launch>
+	<node name="servo_array_driver_node" pkg="servo_array_driver" type="servo_array_driver_node" output="screen">
+		<rosparam file="$(find servo_array_driver)/config/config.yaml" command="load"/>
+	</node>
+</launch>
