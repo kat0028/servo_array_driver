@@ -17,8 +17,8 @@ class servo_driver
 	ros::Subscriber steer_sub;
 	
 	//CALLBACK FUNCTIONS
-	void speed_callback(const std_msgs::Float64::ConstPtr&);
-	void steer_callback(const std_msgs::Float64::ConstPtr&);
+	void speed_callback(const std_msgs::Float64::ConstPtr& speed_msg);
+	void steer_callback(const std_msgs::Float64::ConstPtr& steer_msg);
 	
 	double steer_0, steer, speed_0, speed, steer_range, speed_range;
 

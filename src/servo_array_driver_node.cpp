@@ -7,7 +7,7 @@ servo_driver::servo_driver()
 	steer_sub = n.subscribe("/vehicle/steering_cmd", 1, &servo_driver::steer_callback, this);
 
 	//PUBLISHERS
-	servo_pub = n.advertise<servo_array_driver::ServoArray>("servos_absolute", 1);
+	servo_pub = n.advertise<servo_array_driver::ServoArray>("/servos_absolute", 1);
 
 	//PARAMETERS
 	n.param<double>("servo_array_driver_node/steer_0", steer_0, 330); //Nominal Steering Servo Value
