@@ -38,6 +38,7 @@ void servo_driver::speed_callback(const std_msgs::Float64::ConstPtr& speed_msg)
 {
 	speed = speed_msg->data;
 	std::cout<<"Recieved Speed Command: "<<speed<<std::endl;
+	speed = -1*speed;
 }
 
 void servo_driver::steer_callback(const std_msgs::Float64::ConstPtr& steer_msg)
