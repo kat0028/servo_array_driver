@@ -22,10 +22,12 @@ class servo_driver
 	
 	double steer_0, steer, speed_0, speed, steer_range, speed_range;
 
+	//PUBLISHER FUNCTION
+	void publish2servo();
+
 	public:
 	servo_driver();
-	~servo_driver();
-	void publish2servo();
+	~servo_driver();	
 };
 
 #endif

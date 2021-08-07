@@ -36,14 +36,25 @@ servo_driver::~servo_driver()
 
 void servo_driver::speed_callback(const std_msgs::Float64::ConstPtr& speed_msg)
 {
-	speed = speed_msg->data;
+	//SAVE MESSAGE
+	speed = (-1)*speed_msg->data;  //mulitply by -1 for servo
+
+	//PUBLISH TO SERVOS
+	publish2servo();
+	
+	//ECHO COMMANDS
 	//std::cout<<"Recieved Speed Command: "<<speed<<std::endl;
-	speed = -1*speed;
 }
 
 void servo_driver::steer_callback(const std_msgs::Float64::ConstPtr& steer_msg)
 {
+	//SAVE MESSAGE
 	steer = steer_msg->data;
+
+	//PUBLISH TO SERVOS
+	publish2servo();
+
+	//ECHO COMMANDS
 	//std::cout<<"Recieved Steer Command: "<<steer<<std::endl;
 }
 
@@ -103,12 +114,8 @@ int main(int argc, char **argv)
 {
 	ros::init(argc, argv, "server_array_driver_node");
 	servo_driver ros_wrapper;
-	ros::Rate loop_rate(50);
 
-	while(ros::ok())
-	{
-		ros_wrapper.publish2servo();
-		ros::spinOnce();
-	}
+	ros::spin();
+	
 	return 0;
 }
