@@ -1,4 +1,4 @@
-#include "servo_array_driver/servo_array_driver_node.h"
+#include <servo_array_driver/servo_array_driver_node.h>
 
 servo_driver::servo_driver()
 {
