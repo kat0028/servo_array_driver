@@ -1,17 +1,20 @@
 {
-  "configurations": [
-    {
-      "browse": {
-        "databaseFilename": "",
-        "limitSymbolsToIncludedHeaders": true
-      },
-      "includePath": [
-        "/opt/ros/noetic/include/**",
-        "/home/kyle/soft_sys/jet_racer_ws/src/servo_array_driver/include/**",
-        "/usr/include/**"
-      ],
-      "name": "ROS"
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/opt/ros/noetic/include/**",
+                "/usr/include/**",
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/../../**",
+                "/opt/ros/noetic/include",
+                "/home/kyle/jet_ws/devel/include"
+            ],
+            "name": "ROS"
+        }
+    ],
+    "version": 4
 }
