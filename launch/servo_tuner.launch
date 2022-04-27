@@ -1,0 +1,4 @@
+<launch>
+	<node name="servo_array_tuner" pkg="servo_array_driver" type="servo_array_tuner" output="screen"/>
+	<node name="controlboard" pkg="i2cpwm_board" type="i2cpwm_board"/>
+</launch>
