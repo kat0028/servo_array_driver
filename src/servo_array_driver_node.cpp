@@ -5,9 +5,10 @@ servo_driver::servo_driver()
 	//SUBSCRIBERS
 	speed_sub = n.subscribe("/vehicle/speed_cmd", 1, &servo_driver::speed_callback, this);
 	steer_sub = n.subscribe("/vehicle/steering_cmd", 1, &servo_driver::steer_callback, this);
+	cmd_sub = n.subscribe("/vehicle/control_cmd", 1, &servo_driver::cmd_callback, this);
 
 	//PUBLISHERS
-	servo_pub = n.advertise<servo_array_driver::ServoArray>("/servos_absolute", 1);
+	servo_pub = n.advertise<i2cpwm_board::ServoArray>("/servos_absolute", 1);
 
 	//PARAMETERS
 	n.param<double>("servo_array_driver_node/steer_0", steer_0, 330); //Nominal Steering Servo Value
@@ -58,11 +59,20 @@ void servo_driver::steer_callback(const std_msgs::Float64::ConstPtr& steer_msg)
 	//std::cout<<"Recieved Steer Command: "<<steer<<std::endl;
 }
 
+void servo_driver::cmd_callback(const servo_array_driver::ControlCmd::ConstPtr& cmd_msg)
+{
+	//SAVE DATA
+	steer = cmd_msg->steer;
+	speed = (-1)*cmd_msg->speed;
+
+	publish2servo();
+}
+
 void servo_driver::publish2servo()
 {
-	servo_array_driver::ServoArray array_msg;
-	servo_array_driver::Servo speed_servo;
-	servo_array_driver::Servo steer_servo;
+	i2cpwm_board::ServoArray array_msg;
+	i2cpwm_board::Servo speed_servo;
+	i2cpwm_board::Servo steer_servo;
 
 ///////////////////////////////////////////////////////////////////////////////
 //BUILD SERVO MESSAGES ////////////////////////////////////////////////////////

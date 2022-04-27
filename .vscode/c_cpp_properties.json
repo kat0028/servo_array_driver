@@ -1,19 +1,16 @@
 {
     "configurations": [
         {
-            "browse": {
-                "databaseFilename": "",
-                "limitSymbolsToIncludedHeaders": true
-            },
+            "name": "Linux",
             "includePath": [
-                "/opt/ros/noetic/include/**",
-                "/usr/include/**",
-                "${workspaceFolder}/include",
-                "${workspaceFolder}/../../**",
-                "/opt/ros/noetic/include",
-                "/home/kyle/jet_ws/devel/include"
+                "${workspaceFolder}/../../../**",
+                "/opt/ros/**"
             ],
-            "name": "ROS"
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x64"
         }
     ],
     "version": 4

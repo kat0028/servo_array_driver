@@ -1,6 +1,6 @@
 #include <ros/ros.h>
-#include <servo_array_driver/Servo.h>
-#include <servo_array_driver/ServoArray.h>
+#include <i2cpwm_board/Servo.h>
+#include <i2cpwm_board/ServoArray.h>
 
 #include <dynamic_reconfigure/server.h>
 #include <servo_array_driver/ServoTuneConfig.h>

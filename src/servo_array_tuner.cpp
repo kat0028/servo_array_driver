@@ -2,7 +2,7 @@
 
 servo_array_tuner::servo_array_tuner()
 {
-    servo_pub = n.advertise<servo_array_driver::ServoArray>("/servos_absolute", 1);
+    servo_pub = n.advertise<i2cpwm_board::ServoArray>("/servos_absolute", 1);
 
     this->nodePtr_.reset(new ros::NodeHandle("servo_array_tuner"));
     this->reconfigServerPtr_.reset(new dynamic_reconfigure::Server<servo_array_driver::ServoTuneConfig>(*this->nodePtr_));
@@ -26,9 +26,9 @@ void servo_array_tuner::ReconfigureCallback(const servo_array_driver::ServoTuneC
 
 void servo_array_tuner::publish_servo()
 {
-    servo_array_driver::ServoArray array_msg;
-    servo_array_driver::Servo speed_msg;
-    servo_array_driver::Servo steer_msg;
+    i2cpwm_board::ServoArray array_msg;
+    i2cpwm_board::Servo speed_msg;
+    i2cpwm_board::Servo steer_msg;
 
     speed_msg.servo = 1;
     speed_msg.value = speed;
